@@ -2,7 +2,7 @@
 
 <?php  require_once 'header_template.php'; 
 
-        $query_select = 'select * from produk';
+        $query_select = 'select * from produk where produk.idrestaurant = "'.$_SESSION['restaurantid'].'"';
         $run_query_select = mysqli_query($conn,$query_select);
 
         //cek jika ada parameter delete

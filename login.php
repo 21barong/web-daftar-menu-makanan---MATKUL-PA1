@@ -85,6 +85,7 @@
                                                 // buat session
                                                 $_SESSION['uid'] 	= $d->iduser;
                                                 $_SESSION['uname'] 	= $d->namalengkap;
+                                                $_SESSION['restaurantid'] = $d -> idrestaurant;
                                               
 
                                                 header('location:admin/index.php');

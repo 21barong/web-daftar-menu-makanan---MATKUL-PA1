@@ -27,6 +27,15 @@
 				</div>
 
 				<div class="input-group">
+					<label>Restaurant</label>
+					<select class="input-control" name="restaurant">
+						<option value="">Pilih</option>
+						<option value="a">Lapotoba</option>
+						<option value="b">Fly Over</option>
+					</select>
+				</div>
+
+				<div class="input-group">
 					<label>Kategori</label>
 					<select class="input-control" name="kategori">
 						<option value="">Pilih</option>
@@ -82,14 +91,25 @@
 					// proses upload file
 					move_uploaded_file($tmp_name, '../uploads/products/' . $renamefile);
 
+					// menambahkan id restaurant
+					$selected_restaurant = $_POST['restaurant'];
+					$generated_restaurant_id = 0;
+					if ($selected_restaurant == 'a') 
+					{
+						$generated_restaurant_id = 2131;
+					} else {
+						$generated_restaurant_id = 1331;
+					}
+
 					// proses insert
 					$query_insert = 'insert into produk
-					(namaproduk, hargaproduk, deskripsi, foto, kategori) value (
+					(namaproduk, hargaproduk, deskripsi, foto, kategori,idrestaurant) value (
 					"'.$_POST['nama'].'",
 					"'.$_POST['harga'].'",
 					"'.$_POST['deskripsi'].'",
 					"'.$renamefile.'",
-					"'.$_POST['kategori'].'"
+					"'.$_POST['kategori'].'",
+					"'.$generated_restaurant_id.'"
 					)';
 
 					$run_query_insert = mysqli_query($conn, $query_insert);
